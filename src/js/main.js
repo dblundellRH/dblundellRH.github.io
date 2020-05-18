@@ -59,7 +59,7 @@ function createCookie(name, value, days) {
 		var expires = '; expires='+date.toGMTString();
 	}
 	else var expires = '';
-	document.cookie = name+'='+value+expires+'; path=/';
+	document.cookie = name+'='+value+expires+'; path=/; secure';
 }
 
 if (cookies.some(cookie => cookie.name === COOKIE_NAME)) {
@@ -75,4 +75,4 @@ else {
 
 /* Write to document */
 output.innerText = `${type} ${timePeriod} ${subject} ${location} ${framework}`;
-countOuput.innerText = count > 1 ? `You have discarded ${count} possible PhD topics` : '';
+countOuput.innerText = count > 1 ? `You have discarded ${count} perfectly good PhD topics.` : '';
