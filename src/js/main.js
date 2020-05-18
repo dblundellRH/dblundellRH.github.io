@@ -6,11 +6,7 @@ import frameworks from './definitions/frameworks.js';
 
 
 const OUTPUT_ELEMENT = 'stringOutput';
-const COOKIE_NAME = 'phdCount';
-const COUNT_ELEMENT = 'countOutput';
-
 const output = document.getElementById(OUTPUT_ELEMENT);
-const countOuput = document.getElementById(COUNT_ELEMENT);
 
 function getRandomNumberBetweenIndexRange(start = 0, end) {
     return Math.floor(Math.random() * end) + start;
@@ -21,10 +17,27 @@ function getRandomArrayItem(array) {
 }
 
 const type = getRandomArrayItem(historyTypes);
-const timePeriod = getRandomArrayItem(timePeriods);
+let timePeriod = getRandomArrayItem(timePeriods);
 const subject = getRandomArrayItem(subjects);
 const location = getRandomArrayItem(locations);
 const framework = getRandomArrayItem(frameworks);
+
+// Remove timeperiod if subject is a proper noun
+if (/[A-Z]/.test(subject.charAt(0))) {
+    console.log(subject, 'remove time period');
+    timePeriod = '';
+}
+
+/**
+ * Cookie logic
+ */
+const COOKIE_NAME = 'phd_count';
+const COUNT_ELEMENT = 'countOutput';
+
+const countOuput = document.getElementById(COUNT_ELEMENT);
+
+const cookies = readCookies();
+let count = 1;
 
 function readCookies() {
     const allCookies = document.cookie.split(';');
@@ -39,30 +52,27 @@ function readCookies() {
     });
 }
 
-const cookies = readCookies();
-let count = 1;
-
-function writeCookie(value) {
-    console.log('write cookie', value);
-    const date = new Date();
-    date.setFullYear(date.getFullYear() + 1);
-
-    document.cookie = `${COOKIE_NAME}=${value};max-age=31536000;secure;expires=${date.toUTCString()}`
+function createCookie(name, value, days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = '; expires='+date.toGMTString();
+	}
+	else var expires = '';
+	document.cookie = name+'='+value+expires+'; path=/';
 }
 
-if (cookies.some((cookie, index) => cookie.name === COOKIE_NAME)) {
+if (cookies.some(cookie => cookie.name === COOKIE_NAME)) {
     const countCookie = cookies.filter(cookie => cookie.name === COOKIE_NAME);
 
-    console.log(countCookie[0].value);
     count = parseInt(countCookie[0].value) + 1;
 
-    writeCookie(count);
+    createCookie(COOKIE_NAME, count, 365);
 }
 else {
-    console.log('no cookie set');
-    writeCookie(count);
+    createCookie(COOKIE_NAME, count, 365);
 }
 
+/* Write to document */
 output.innerText = `${type} ${timePeriod} ${subject} ${location} ${framework}`;
-
-countOuput.innerText = count > 1 ? `You have created ${count} PhD topics` : '';
+countOuput.innerText = count > 1 ? `You have discarded ${count} possible PhD topics` : '';

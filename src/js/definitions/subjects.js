@@ -49,7 +49,7 @@ export default [
     "John Rockefeller",
     "hipsters",
     "Aesop",
-    "Flo Nightingale",
+    "Florence Nightingale",
     "firefighters",
     "haberdashers",
     "innkeepers",
