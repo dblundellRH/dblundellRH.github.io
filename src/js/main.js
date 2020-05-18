@@ -24,7 +24,6 @@ const framework = getRandomArrayItem(frameworks);
 
 // Remove timeperiod if subject is a proper noun
 if (/[A-Z]/.test(subject.charAt(0))) {
-    console.log(subject, 'remove time period');
     timePeriod = '';
 }
 
@@ -42,12 +41,12 @@ let count = 1;
 function readCookies() {
     const allCookies = document.cookie.split(';');
 
-    return allCookies.map(cookie => {
-        const temp = cookie.split('=');
+    return allCookies.map(a => {
+        const cookie = a.split('=');
 
         return {
-            name: temp[0],
-            value: temp[1],
+            name: cookie[0],
+            value: cookie[1],
         }
     });
 }
@@ -58,11 +57,17 @@ function createCookie(name, value, days) {
 		date.setTime(date.getTime()+(days*24*60*60*1000));
 		var expires = '; expires='+date.toGMTString();
 	}
-	else var expires = '';
-	document.cookie = name+'='+value+expires+'; path=/; secure';
+	else {
+        var expires = '';
+    }
+
+	document.cookie = name + '=' + value + expires +'; path=/; secure';
 }
 
+console.log('read cookies', cookies);
+
 if (cookies.some(cookie => cookie.name === COOKIE_NAME)) {
+    console.log('create cookie');
     const countCookie = cookies.filter(cookie => cookie.name === COOKIE_NAME);
 
     count = parseInt(countCookie[0].value) + 1;
@@ -70,6 +75,7 @@ if (cookies.some(cookie => cookie.name === COOKIE_NAME)) {
     createCookie(COOKIE_NAME, count, 365);
 }
 else {
+    console.log('no cookie located');
     createCookie(COOKIE_NAME, count, 365);
 }
 
