@@ -45,8 +45,8 @@ function readCookies() {
         const cookie = a.split('=');
 
         return {
-            name: cookie[0],
-            value: cookie[1],
+            name: cookie[0].trim(),
+            value: cookie[1].trim(),
         }
     });
 }
