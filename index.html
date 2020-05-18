@@ -12,6 +12,20 @@
 
         <script defer type="module" src="src/js/main.js"></script>
 
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PT4VEBYQRE"></script>
+
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-PT4VEBYQRE');
+        </script>
+
+        <script>
+            document
+        </script>
+
         <style>
             html, body {
                 height: 100%;
@@ -33,6 +47,12 @@
                 text-align: center;
             }
 
+            .count-output-text {
+                position: absolute;
+                bottom: 0;
+                right: 1em;
+            }
+
         </style>
     </head>
 
@@ -40,6 +60,7 @@
         <main class="container">
             <output class="output-frame">
                 <h2 class="output-text" id="stringOutput">Loading...</h2>
+                <p class="count-output-text" id="countOutput"></p>
             </output>
         </main>
     </body>
