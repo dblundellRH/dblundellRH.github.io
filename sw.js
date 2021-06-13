@@ -6,7 +6,7 @@ var __wpo = {
       "/"
     ],
     "additional": [
-      "/main.d6d2769447faef95f2f2.chunk.js",
+      "/main.50d6b0acd39f9138fd6b.chunk.js",
       "/npm.babel.479115b2542204282bcd.chunk.js",
       "/npm.emotion.50b0a71fe1806ed3fcea.chunk.js",
       "/npm.promise.2a05705369e7b5d058c8.chunk.js",
@@ -22,7 +22,7 @@ var __wpo = {
   "externals": [],
   "hashesMap": {
     "5e53ef208f3fa79a48f8374488f473c76e1233de": "/favicon.ico",
-    "38406b42d10d276c66f015171c1d5271bb28839f": "/main.d6d2769447faef95f2f2.chunk.js",
+    "e3e553cf9e6d6373b372a758f5695f19b3f5f0a9": "/main.50d6b0acd39f9138fd6b.chunk.js",
     "0aea35742c2face8f72fbf0b50b36fd0939bcbee": "/npm.babel.479115b2542204282bcd.chunk.js",
     "d438d55caf830f909e91749c381baabd6d21362d": "/npm.emotion.50b0a71fe1806ed3fcea.chunk.js",
     "9e93e73752dd9853c7b0848b5f4d9aec29a4b3d2": "/npm.promise.2a05705369e7b5d058c8.chunk.js",
@@ -33,11 +33,11 @@ var __wpo = {
     "b2c4ca014c2814c6580affeee7810277ce8d8377": "/npm.react-is.bb7a4e94ebd407e275fb.chunk.js",
     "cec5820d63f711b05a821ecbff358b3a783b2af4": "/npm.sanitize.css.3b5dc7cdbe37c318dff5.chunk.js",
     "375047f3e9ebb8da5cbccde0ba8be6834e108621": "/runtime.b5667ff0f14144393197.js",
-    "56ab93bf3847e5aabee49ae0b35f9754a0d3bef4": "/"
+    "255c691be733b1e052edb3e0166eabeb5618e3d1": "/"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "13/06/2021, 14:03:28",
+  "version": "13/06/2021, 17:06:40",
   "name": "webpack-offline",
   "pluginVersion": "5.0.6",
   "relativePaths": false
